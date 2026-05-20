@@ -18,17 +18,11 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
-    - name: List files (debug)
-      run: |
-        pwd
-        ls -la
-        ls -la CalculatorApp/
-
     - name: Restore dependencies
-      run: dotnet restore CalculatorApp/CalculatorApp.csproj
+      run: dotnet restore CalculatorApp.sln
 
     - name: Build
-      run: dotnet build CalculatorApp/CalculatorApp.csproj --no-restore
+      run: dotnet build CalculatorApp.sln --no-restore
 
     - name: Test
-      run: dotnet test CalculatorApp/CalculatorApp.Tests.csproj
+      run: dotnet test CalculatorApp.sln --no-build --verbosity normal
