@@ -13,25 +13,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Debug - show all files
-      run: |
-        echo "Current directory:"
-        pwd
-        echo "All files and folders:"
-        ls -la
-        echo "Looking for .sln file:"
-        find . -name "*.sln"
-
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
     - name: Restore dependencies
-      run: dotnet restore CalculatorApp.sln
+      run: dotnet restore
+      working-directory: CalculatorApp
 
     - name: Build
-      run: dotnet build CalculatorApp.sln --no-restore
+      run: dotnet build --no-restore
+      working-directory: CalculatorApp
 
     - name: Test
-      run: dotnet test CalculatorApp.sln --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal
+      working-directory: CalculatorApp.Tests
