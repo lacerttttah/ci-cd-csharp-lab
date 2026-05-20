@@ -13,6 +13,15 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Debug - show all files
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "All files and folders:"
+        ls -la
+        echo "Looking for .sln file:"
+        find . -name "*.sln"
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
