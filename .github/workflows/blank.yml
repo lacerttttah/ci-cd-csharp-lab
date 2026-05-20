@@ -18,14 +18,17 @@ jobs:
       with:
         dotnet-version: '8.0.x'
 
+    - name: List files (debug)
+      run: |
+        pwd
+        ls -la
+        ls -la CalculatorApp/
+
     - name: Restore dependencies
-      run: dotnet restore
-      working-directory: CalculatorApp
+      run: dotnet restore CalculatorApp/CalculatorApp.csproj
 
     - name: Build
-      run: dotnet build --no-restore
-      working-directory: CalculatorApp
+      run: dotnet build CalculatorApp/CalculatorApp.csproj --no-restore
 
     - name: Test
-      run: dotnet test
-      working-directory: CalculatorApp
+      run: dotnet test CalculatorApp/CalculatorApp.Tests.csproj
